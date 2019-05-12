@@ -3,7 +3,7 @@
     <v-toolbar dark class="cyan darken-3">
       <v-toolbar-side-icon @click.stop="sideNav = !sideNav" class="hidden-sm-and-up"></v-toolbar-side-icon>
       <v-toolbar-title>
-        <router-link to="/" tag="span" style="cursor: pointer">DevMeetup</router-link>
+        <router-link to="/" tag="span" style="cursor: pointer">Jump in</router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-xs-only">
@@ -36,8 +36,8 @@ export default {
     return {
       sideNav: false,
       menuItems: [
-        { icon: "supervisor_account", title: "View Events", link: "/meetups" },
-        { icon: "room", title: "Organize Events", link: "/meetup/new" },
+        { icon: "supervisor_account", title: "View Events", link: "/events" },
+        { icon: "room", title: "Organize Events", link: "/event/new" },
         { icon: "person", title: "Profile", link: "/profile" },
         { icon: "face", title: "Sign up", link: "/signup" },
         { icon: "lock_open", title: "Sign in", link: "/signin" }
