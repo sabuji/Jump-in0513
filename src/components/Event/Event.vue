@@ -8,8 +8,8 @@
           </v-card-title>
           <v-img :src="event.imageUrl" height="400px"></v-img>
           <v-card-text>
-            <div class="info--text">{{event.date}} - Where it takes place</div>
-            <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?</div>
+            <div class="info--text">{{event.date | date}} - {{event.location}}</div>
+            <div>{{event.description}}</div>
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
