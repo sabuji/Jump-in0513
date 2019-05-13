@@ -6,6 +6,7 @@ import CreateEvent from "./components/Event/CreateEvent.vue";
 import Profile from "./components/User/Profile.vue";
 import Signup from "./components/User/Signup.vue";
 import Signin from "./components/User/Signin.vue";
+import Event from "./components/Event/Event.vue";
 
 Vue.use(Router);
 
@@ -27,6 +28,12 @@ export default new Router({
       path: "/event/new",
       name: "CreateEvent",
       component: CreateEvent
+    },
+    {
+      path: "/events/:id",
+      name: "Event",
+      props: true,
+      component: Event
     },
     {
       path: "/profile",
