@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import firebase from "firebase";
 
 Vue.use(Vuex);
 
@@ -24,10 +25,7 @@ export default new Vuex.Store({
         description: "めんたいこ！"
       }
     ],
-    user: {
-      id: "bsuejfhsiake",
-      registeredEvents: ["msiyyfgtydh"]
-    }
+    user: null
   },
   mutations: {
     toggleSideMenu(state) {
@@ -35,6 +33,9 @@ export default new Vuex.Store({
     },
     createEvent(state, payload) {
       state.loadedEvents.push(payload);
+    },
+    setUser(state, payload) {
+      state.user = payload;
     }
   },
   actions: {
@@ -52,6 +53,21 @@ export default new Vuex.Store({
       };
       //Reach out to firebase and store it
       commit("createEvent", event);
+    },
+    signUserUp({ commit }, payload) {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(payload.email, payload.password)
+        .then(user => {
+          const newUser = {
+            id: user.uid,
+            registeredEvents: []
+          };
+          commit("setUser", newUser);
+        })
+        .catch(error => {
+          console.log(error);
+        });
     }
   },
   getters: {
@@ -63,13 +79,15 @@ export default new Vuex.Store({
     featuredEvents(state, getters) {
       return getters.loadedEvents.slice(0, 5);
     },
-
     loadedEvent(state) {
       return eventId => {
         return state.loadedEvents.find(event => {
           return event.id === eventId;
         });
       };
+    },
+    user(state) {
+      return state.user;
     }
   }
 });

@@ -4,7 +4,7 @@
       <v-flex xs12 sm6 offset-sm3>
         <v-card>
           <v-container>
-            <form>
+            <form @submit.prevent="onSignup">
               <v-layout row>
                 <v-flex xs12>
                   <v-text-field
@@ -32,10 +32,10 @@
               <v-layout row>
                 <v-flex xs12>
                   <v-text-field
-                    name="confirmpassword"
-                    label="confirmPassword"
-                    id="confirmpassword"
-                    v-model="confirmpassword"
+                    name="confirmPassword"
+                    label="ConfirmPassword"
+                    id="confirmPassword"
+                    v-model="confirmPassword"
                     type="password"
                     :rules="[comparePasswords]"
                   ></v-text-field>
@@ -68,15 +68,23 @@ export default {
       return this.password !== this.confirmPassword
         ? "Password do not match"
         : "";
+    },
+    user() {
+      return this.$store.getters.user;
+    }
+  },
+  watch: {
+    user(value) {
+      if (value !== null && value !== undefined) {
+        this.$router.push("/");
+      }
     }
   },
   methods: {
     onSignup() {
-      //Vuex
-      console.log({
+      this.$store.dispatch("signUserUp", {
         email: this.email,
-        password: this.password,
-        confirmPassword: this.confirmPassword
+        password: this.password
       });
     }
   }
