@@ -40,7 +40,7 @@ export default {
         { icon: "lock_open", title: "Sign in", link: "/signin" }
       ];
       if (this.userIsAuthenticated) {
-        menuItems: [
+        menuItems = [
           { icon: "supervisor_account", title: "View Events", link: "/events" },
           { icon: "room", title: "Organize Events", link: "/event/new" },
           { icon: "person", title: "Profile", link: "/profile" }

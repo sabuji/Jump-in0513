@@ -6,25 +6,27 @@ import store from "./store";
 import "./registerServiceWorker";
 import DateFilter from "./filters/date";
 import firebase from "firebase";
+import AlertCmp from "./components/Shared/Alert.vue";
 
 Vue.config.productionTip = false;
 
 Vue.filter("date", DateFilter);
-
-var firebaseConfig = {
-  apiKey: "AIzaSyDXkMSBiVXMFfjKhqxw9sgHEhDFmmS6POM",
-  authDomain: "test-9991c.firebaseapp.com",
-  databaseURL: "https://test-9991c.firebaseio.com",
-  projectId: "test-9991c",
-  storageBucket: "test-9991c.appspot.com",
-  messagingSenderId: "712570669760",
-  appId: "1:712570669760:web:169c794c6d3e647c"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+Vue.component("app-alert", AlertCmp);
 
 new Vue({
+  el: "#app",
   router,
   store,
-  render: h => h(App)
-}).$mount("#app");
+  render: h => h(App),
+  created() {
+    firebase.initializeApp({
+      apiKey: "AIzaSyDXkMSBiVXMFfjKhqxw9sgHEhDFmmS6POM",
+      authDomain: "test-9991c.firebaseapp.com",
+      databaseURL: "https://test-9991c.firebaseio.com",
+      projectId: "test-9991c",
+      storageBucket: "test-9991c.appspot.com",
+      messagingSenderId: "712570669760",
+      appId: "1:712570669760:web:169c794c6d3e647c"
+    });
+  }
+});
