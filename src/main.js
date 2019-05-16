@@ -28,5 +28,6 @@ new Vue({
       messagingSenderId: "712570669760",
       appId: "1:712570669760:web:169c794c6d3e647c"
     });
+    this.$store.dispatch("loadEvents");
   }
 });

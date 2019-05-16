@@ -11,7 +11,7 @@
               <v-flex xs7 sm8 md9>
                 <v-card-title primary-title>
                   <div>
-                    <h3 class="white--text">{{ event.title}}</h3>
+                    <h3 class="white--text mb-0">{{ event.title}}</h3>
                     <div>{{event.date | date}}</div>
                   </div>
                 </v-card-title>

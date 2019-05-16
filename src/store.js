@@ -33,6 +33,9 @@ export default new Vuex.Store({
     toggleSideMenu(state) {
       state.drawer = !state.drawer;
     },
+    setLoadedEvents(state, payload) {
+      state.loadedEvents = payload;
+    },
     createEvent(state, payload) {
       state.loadedEvents.push(payload);
     },
@@ -53,17 +56,57 @@ export default new Vuex.Store({
     toggleSideMenu({ commit }) {
       commit("toggleSideMenu");
     },
-    createEvent({ commit }, payload) {
+    loadEvents({ commit }) {
+      commit("setLoading", true);
+      firebase
+        .database()
+        .ref("events")
+        .once("value")
+        .then(data => {
+          const events = [];
+          const obj = data.val();
+          for (let key in obj) {
+            events.push({
+              id: key,
+              title: obj[key].title,
+              description: obj[key].description,
+              imageUrl: obj[key].imageUrl,
+              date: obj[key].date,
+              creatorId: obj[key].creatorId
+            });
+          }
+          commit("setLoadedEvents", events);
+          commit("setLoading", false);
+        })
+        .catch(error => {
+          console.log(error);
+          commit("setLoading", false);
+        });
+    },
+    createEvent({ commit, getters }, payload) {
       const event = {
         title: payload.title,
         location: payload.location,
         imageUrl: payload.imageUrl,
         description: payload.description,
-        date: payload.date,
-        id: "bjshuddjel"
+        date: payload.date.toISOString(),
+        creatorId: getters.user.id
       };
+      firebase
+        .database()
+        .ref("events")
+        .push(event)
+        .then(data => {
+          const key = data.key;
+          commit("createEvent", {
+            ...event,
+            id: key
+          });
+        })
+        .catch(error => {
+          console.log(error);
+        });
       //Reach out to firebase and store it
-      commit("createEvent", event);
     },
     signUserUp({ commit }, payload) {
       commit("setLoading", true);
@@ -104,6 +147,13 @@ export default new Vuex.Store({
           commit("setError", error);
           console.log(error);
         });
+    },
+    autoSignIn({ commit }, payload) {
+      commit("setUser", { id: payload.uid, registeredMeetups: [] });
+    },
+    logout({ commit }) {
+      firebase.auth().signOut();
+      commit("setUser", null);
     },
     clearError({ commit }) {
       commit("clearError");
