@@ -81,7 +81,6 @@ export default {
       imageUrl: "",
       description: "",
       picker: new Date().toISOString().substr(0, 10),
-
       date: new Date(),
       time: new Date()
     };
@@ -128,4 +127,3 @@ export default {
   }
 };
 </script>
-

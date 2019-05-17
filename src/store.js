@@ -83,14 +83,14 @@ export default new Vuex.Store({
           commit("setLoading", false);
         });
     },
-    createEvent({ commit, getters }, payload) {
+    createEvent({ commit }, payload) {
       const event = {
         title: payload.title,
         location: payload.location,
         imageUrl: payload.imageUrl,
         description: payload.description,
-        date: payload.date.toISOString(),
-        creatorId: getters.user.id
+        date: payload.date.toISOString()
+        // creatorId: getters.user.id
       };
       firebase
         .database()
