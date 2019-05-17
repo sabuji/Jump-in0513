@@ -7,11 +7,13 @@ import "./registerServiceWorker";
 import DateFilter from "./filters/date";
 import firebase from "firebase";
 import AlertCmp from "./components/Shared/Alert.vue";
+// import EditEventDetailsDialog from "./components/Event/Edit/EditEventDatailsDialog.vue";
 
 Vue.config.productionTip = false;
 
 Vue.filter("date", DateFilter);
 Vue.component("app-alert", AlertCmp);
+// Vue.component("app-edit-event-datails-dialog", EditEventDetailsDialog);
 
 new Vue({
   el: "#app",
