@@ -7,7 +7,7 @@ import MyEvent from "./components/User/MyEvent.vue";
 import Signup from "./components/User/Signup.vue";
 import Signin from "./components/User/Signin.vue";
 import Event from "./components/Event/Event.vue";
-// import AuthGuard from "./auth-guard.js";
+// import AuthGuard from "./router/auth-guard";
 
 Vue.use(Router);
 

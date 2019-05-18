@@ -19,7 +19,7 @@
                 required
               ></v-text-field>
               <v-text-field
-                name="imageUrl"
+                name="imageurl"
                 label="Image URL"
                 id="image-url"
                 v-model="imageUrl"
@@ -42,6 +42,7 @@
                 multi-line
                 required
               ></v-text-field>
+              <v-text-field name="mail" label="Mail for contact" id="mail" v-model="mail" required></v-text-field>
             </v-flex>
           </v-layout>
 
@@ -79,6 +80,7 @@ export default {
       title: "",
       location: "",
       imageUrl: "",
+      mail: "",
       description: "",
       picker: new Date().toISOString().substr(0, 10),
       date: new Date(),
@@ -91,6 +93,7 @@ export default {
         this.title !== "" &&
         this.location !== "" &&
         this.imageUrl !== "" &&
+        this.mail !== "" &&
         this.description !== ""
       );
     },
@@ -118,6 +121,7 @@ export default {
         title: this.title,
         location: this.location,
         imageUrl: this.imageUrl,
+        mail: this.mail,
         description: this.description,
         date: this.submittableDateTime
       };

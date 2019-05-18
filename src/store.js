@@ -14,6 +14,7 @@ export default new Vuex.Store({
         title: "Events in Itoshima",
         date: new Date(),
         location: "Itoshima",
+        mail: "aaa@bbb",
         description: "伊都菜彩！"
       },
       {
@@ -22,6 +23,7 @@ export default new Vuex.Store({
         title: "Events in Tenjin",
         date: new Date(),
         location: "Tenjin",
+        mail: "aaa@bbb",
         description: "めんたいこ！"
       }
     ],
@@ -73,7 +75,8 @@ export default new Vuex.Store({
               imageUrl: obj[key].imageUrl,
               date: obj[key].date,
               location: obj[key].location,
-              creatorId: obj[key].creatorId
+              mail: obj[key].mail
+              // creatorId: obj[key].creatorId
             });
           }
           commit("setLoadedEvents", events);
@@ -90,6 +93,7 @@ export default new Vuex.Store({
         location: payload.location,
         imageUrl: payload.imageUrl,
         description: payload.description,
+        mail: payload.mail,
         date: payload.date.toISOString()
         // creatorId: getters.user.id
       };
@@ -107,7 +111,6 @@ export default new Vuex.Store({
         .catch(error => {
           console.log(error);
         });
-      //Reach out to firebase and store it
     },
     signUserUp({ commit }, payload) {
       commit("setLoading", true);
@@ -150,7 +153,7 @@ export default new Vuex.Store({
         });
     },
     autoSignIn({ commit }, payload) {
-      commit("setUser", { id: payload.uid, registeredMeetups: [] });
+      commit("setUser", { id: payload.uid, registeredEvents: [] });
     },
     logout({ commit }) {
       firebase.auth().signOut();

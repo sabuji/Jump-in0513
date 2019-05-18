@@ -14,10 +14,11 @@
           <v-card-text>
             <div class="info--text">{{event.date | date}} - {{event.location}}</div>
             <div>{{event.description}}</div>
+            <div class="info--text">{{event.mail}}</div>
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn class="primary">Register</v-btn>
+            <!-- <v-btn class="primary">Register</v-btn> -->
           </v-card-actions>
         </v-card>
       </v-flex>

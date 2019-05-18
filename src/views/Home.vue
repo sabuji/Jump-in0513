@@ -13,7 +13,7 @@
         <v-progress-circular
           indeterminate
           color="cyan darken-3"
-          :width="7"
+          :width="5"
           :size="70"
           v-if="loading"
         ></v-progress-circular>
@@ -34,9 +34,7 @@
       </v-flex>
     </v-layout>
     <v-layout row wrap class="mt-2">
-      <v-flex xs12 class="text-xs-center">
-        <!-- <p>Join our awesome events!</p> -->
-      </v-flex>
+      <v-flex xs12 class="text-xs-center"></v-flex>
     </v-layout>
   </v-container>
 </template>

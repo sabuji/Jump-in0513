@@ -58,8 +58,8 @@ export default {
             title: "View Events",
             link: "/events"
           },
-          { icon: "room", title: "Organize Event", link: "/event/new" },
-          { icon: "list_alt", title: "My Event", link: "/myevent" }
+          { icon: "room", title: "Organize Event", link: "/event/new" }
+          // { icon: "list_alt", title: "My Event", link: "/myevent" }
         ];
       }
       return menuItems;
