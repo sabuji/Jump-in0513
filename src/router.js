@@ -3,7 +3,7 @@ import Router from "vue-router";
 import Home from "./views/Home.vue";
 import Events from "./components/Event/Events.vue";
 import CreateEvent from "./components/Event/CreateEvent.vue";
-import Profile from "./components/User/Profile.vue";
+import MyEvent from "./components/User/MyEvent.vue";
 import Signup from "./components/User/Signup.vue";
 import Signin from "./components/User/Signin.vue";
 import Event from "./components/Event/Event.vue";
@@ -38,9 +38,9 @@ export default new Router({
       component: Event
     },
     {
-      path: "/profile",
-      name: "Profile",
-      component: Profile
+      path: "/myevent",
+      name: "MyEvent",
+      component: MyEvent
       // beforeEnter: AuthGuard
     },
     {

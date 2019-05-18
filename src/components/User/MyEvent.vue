@@ -1,5 +1,5 @@
 <template>
   <div>
-    <p>The User Page</p>
+    <p>Event list Page</p>
   </div>
 </template>

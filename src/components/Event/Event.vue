@@ -5,6 +5,10 @@
         <v-card>
           <v-card-title>
             <h4 class="primary--text">{{event.title}}</h4>
+            <template v-if="true">
+              <v-spacer></v-spacer>
+              <app-edit-event-details-dialog></app-edit-event-details-dialog>
+            </template>
           </v-card-title>
           <v-img :src="event.imageUrl" height="400px"></v-img>
           <v-card-text>

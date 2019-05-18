@@ -1,16 +1,22 @@
 <template>
   <v-container>
-    <v-layout row wrap>
+    <!-- <v-layout row wrap>
       <v-flex x12 sm6 class="text-xs-center text-sm-right">
         <v-btn large router to="/events" class="info">Explore Events</v-btn>
       </v-flex>
       <v-flex xs12 sm6 class="text-xs-center text-sm-left">
         <v-btn large router to="/event/new" class="info">Organize Events</v-btn>
       </v-flex>
-    </v-layout>
+    </v-layout>-->
     <v-layout>
       <v-flex xs12 class="text-xs-center">
-        <v-progress-circular indeterminate color="green" :width="7" :size="70" v-if="loading"></v-progress-circular>
+        <v-progress-circular
+          indeterminate
+          color="cyan darken-3"
+          :width="7"
+          :size="70"
+          v-if="loading"
+        ></v-progress-circular>
       </v-flex>
     </v-layout>
     <v-layout row wrap class="mt-2" v-if="!loading">
@@ -29,7 +35,7 @@
     </v-layout>
     <v-layout row wrap class="mt-2">
       <v-flex xs12 class="text-xs-center">
-        <p>Join our awesome events!</p>
+        <!-- <p>Join our awesome events!</p> -->
       </v-flex>
     </v-layout>
   </v-container>
